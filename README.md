@@ -1,4 +1,4 @@
-## 📱 Tecnologias Utilizadas
+# Tecnologias Utilizadas
 
 - [Robot Framework](https://robotframework.org/)
 - [Appium](https://appium.io/)
@@ -8,11 +8,8 @@
 - [GitHub Actions](https://github.com/features/actions)
 
   
----
 
-## ⚙️ Como Executar Localmente
-
-### 📦 Pré-requisitos
+# Pré-requisitos
 
 - Python 3.12+
 - Node.js 18+
@@ -21,20 +18,18 @@
   npm install -g appium
 ```
 
-### 📦 Allure CLI instalada globalmente:
+## Allure CLI instalada globalmente:
 ```bash
 npm install -g allure-commandline
-```
 
-### 📦 Instalação das Dependências
+
+## Instalação das Dependências
 ```bash
 pip install -r requirements.txt
+
 ```
-### 🧠 Configuração das Desired Capabilities
 
-As capabilities são definidas dinamicamente com base no valor da variável PLATFORM (android ou ios). O arquivo que gerencia isso é Start Session, encontrado nos recursos compartilhados (env.resource).
-
-### ✅ Exemplo Android
+## Exemplo Android
 ```bash
 Open Application    http://localhost:4723
 ... platformName=Android
@@ -46,7 +41,7 @@ Open Application    http://localhost:4723
 ... autoGrantPermissions=true
 ```
 
-### 🍏 Exemplo iOS
+## Exemplo iOS
 ```bash
 Open Application    http://localhost:4723
 ... platformName=iOS
@@ -59,22 +54,22 @@ Open Application    http://localhost:4723
 ... autoAcceptAlerts=true
 ```
 
-### ▶️ Iniciar o Servidor Appium
+## Iniciar o Servidor Appium
 ```bash
 npx appium
 ```
 
-### ▶️ Executar Testes Android
+## Executar Testes Android
 ```bash
 robot --variable PLATFORM:android --listener "allure_robotframework;allure_results" tests/
 ```
 
-### ▶️ Executar Testes iOS
+## Executar Testes iOS
 ```bash
 robot --variable PLATFORM:ios --listener "allure_robotframework;allure_results" tests/
 ```
 
-### 📊 Gerar Relatório Allure
+## Gerar Relatório Allure
 ```bash
 allure generate allure_results -o allure_report --clean
 allure open allure_report
