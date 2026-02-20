@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install robotframework robotframework-appiumlibrary Appium-Python-Client
+
+      - name: Start Appium server
+        run: |
+          npm install -g appium
+          nohup appium --allow-insecure=chromedriver_autodownload > appium.log 2>&1 &
+
+      - name: Run Robot Framework tests
+        run: |
+          robot -d results tests/
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: robot-results
+          path: results/
