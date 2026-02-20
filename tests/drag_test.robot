@@ -9,8 +9,6 @@ Test Setup       Start Session
 Test Teardown    End Session
 
 *** Variables ***
-${safe_test_name}    Cenario_10_Drag_an_drop_com_sucesso
-
 *** Test Cases ***
 Cenario_01_Drag_an_drop_com_sucesso
     Dado que o usuário está na tela de Drag
